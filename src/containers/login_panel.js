@@ -4,9 +4,6 @@ import { bindActionCreators} from 'redux';
 import { postLogin } from '../actions/index';
 import axios from 'axios';
 
-const BACKEND_URL = 'http://localhost:8090/api/client_auth';
-const LOGIN_URL = 'www.google.com';
-
 class LoginPanel extends Component {
   constructor(props) {
     super(props);
@@ -30,14 +27,15 @@ class LoginPanel extends Component {
     event.preventDefault();
     //fetch weather data
     //this.props.postLogin(this.state.loginCode);
-    //this.setState({ loginCode: '' });
 
     axios.post(ROOT_URL, {
       auth_type: 'code',
       code: this.state.loginCode
     }).then(res => {
-      console.log(res.data.login_url);
-      window.location.assign(LOGIN_URL);
+      window.location.assign(res.data.login_url);
+    }).catch((err) => {
+      this.setState({ loginCode: '' });
+      console.log(err);
     });
   }
 

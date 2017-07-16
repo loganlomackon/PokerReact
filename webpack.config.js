@@ -22,6 +22,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './',
-    port: 3000
+    public: 'ec2-13-114-17-198.ap-northeast-1.compute.amazonaws.com',
+    compress: true
   }
 };

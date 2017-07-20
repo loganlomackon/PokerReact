@@ -4,23 +4,30 @@ import { bindActionCreators} from 'redux';
 import { postLogin } from '../actions/index';
 import axios from 'axios';
 
+const BACKEND_LOGIN_URL = 'https://backend.pokerhousecn.com/api/client_auth';
+
 class LoginPanel extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loginCode: '',
+      email: '',
+      password: '',
       loginUrl: ''
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
+    this.onEmailInputChange = this.onEmailInputChange.bind(this);
+    this.onPasswordInputChange = this.onPasswordInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   //!!!! "this" in a callback function will go wrong without "bind(this)""
-  onInputChange(event) {
-    console.log(event.target.value);
-    this.setState({ loginCode: event.target.value });
+  onEmailInputChange(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  onPasswordInputChange(event) {
+    this.setState({ password: event.target.value });
   }
 
   onFormSubmit(event) {
@@ -28,13 +35,14 @@ class LoginPanel extends Component {
     //fetch weather data
     //this.props.postLogin(this.state.loginCode);
 
-    axios.post(ROOT_URL, {
-      auth_type: 'code',
-      code: this.state.loginCode
+    axios.post(BACKEND_LOGIN_URL, {
+      auth_type: 'email_password',
+      email: this.state.email,
+      password: this.state.password
     }).then(res => {
       window.location.assign(res.data.login_url);
     }).catch((err) => {
-      this.setState({ loginCode: '' });
+      this.setState({ email: '', password : '' });
       console.log(err);
     });
   }
@@ -42,13 +50,19 @@ class LoginPanel extends Component {
   render() {
     return (
       <div>
+
       <form onSubmit={this.onFormSubmit} className="input-group">
         <input
-          placeholder="輸入認證碼並登入"
+          placeholder="Email"
           className="form-control"
-          //Local state
-          value={this.state.loginCode}
-          onChange={this.onInputChange}
+          value={this.state.email}
+          onChange={this.onEmailInputChange}
+        />
+        <input
+          placeholder="Password"
+          className="form-control"
+          value={this.state.password}
+          onChange={this.onPasswordInputChange}
         />
         <span className="input-group-btn">
           <button type="submit" className="btn btn-secondary">Submit</button>

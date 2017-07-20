@@ -23,6 +23,7 @@ module.exports = {
     historyApiFallback: true,
     contentBase: './',
     public: 'ec2-13-114-17-198.ap-northeast-1.compute.amazonaws.com',
+    disableHostCheck: true,
     compress: true
   }
 };

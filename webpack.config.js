@@ -14,6 +14,14 @@ module.exports = {
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
+    },
+    {
+      test: /\.json$/,
+      loader: 'json-loader'
+    },
+    {
+      test: /\.md$/,
+      loader: 'raw-loader'
     }]
   },
   resolve: {
@@ -22,7 +30,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './',
-    public: 'ec2-13-114-17-198.ap-northeast-1.compute.amazonaws.com',
+    public: '47.91.158.55',
     disableHostCheck: true,
     compress: true
   }

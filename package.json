@@ -31,11 +31,17 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
+    "json-loader": "^0.5.7",
     "lodash": "^3.10.1",
+    "marked": "^0.3.6",
+    "md-to-react": "^0.2.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-fluid-container": "^0.6.0",
+    "react-markdown": "^2.5.0",
     "react-redux": "4.3.0",
     "react-router": "^2.8.1",
+    "react-router-dom": "^4.1.2",
     "react-sparklines": "^1.6.0",
     "redux": "^3.0.4",
     "redux-promise": "^0.5.3"

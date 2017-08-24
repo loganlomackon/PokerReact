@@ -1,0 +1,21 @@
+.container-fluid.size-full {
+  width: 100%;
+  height: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.basic-page {
+  max-width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.content{
+  margin-right: 50px;
+  margin-left: 50px;
+}

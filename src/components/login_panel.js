@@ -4,8 +4,8 @@ import { bindActionCreators} from 'redux';
 import { postLogin } from '../actions/index';
 import axios from 'axios';
 
-//const BACKEND_LOGIN_URL = 'https://backend.pokerhousecn.com/api/client_auth';
-const BACKEND_LOGIN_URL = 'http://localhost:8080/api/client_auth';
+const BACKEND_LOGIN_URL = 'https://backend.pokerhousecn.com/api/client_auth';
+//const BACKEND_LOGIN_URL = 'http://localhost:8080/api/client_auth';
 
 class LoginPanel extends Component {
     constructor(props) {
@@ -33,10 +33,10 @@ class LoginPanel extends Component {
       auth_type: 'quick',
       member_id: this.state.memberId
     }).then(res => {
-      console.log(res.data.login_url);
-      //window.location.assign(res.data.login_url);
+      //console.log(res.data.login_url);
+      window.location.assign(res.data.login_url);
     }).catch((err) => {
-      this.setState({ email: '', password : '' });
+      this.setState({ memberId: '' });
       console.log(err);
     });
   }
